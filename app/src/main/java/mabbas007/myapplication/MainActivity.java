@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity
         setButtonClickListener(R.id.btnChangeDrawableLeft);
         setButtonClickListener(R.id.btnChangeDrawableRight);
         setButtonClickListener(R.id.btnChangeClosePadding);
+        setButtonClickListener(R.id.btnSetLimit);
+
     }
 
     @Override
@@ -49,6 +51,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClick(View v) {
+	    mTagsEditText.setTagsLimit(0);
+
         switch (v.getId()) {
             case R.id.btnChangeTags: {
                 //mTagsEditText.setTags("1", "2", "3");
@@ -72,13 +76,21 @@ public class MainActivity extends AppCompatActivity
                 break;
             }
             case R.id.btnChangeDrawableRight: {
-                mTagsEditText.setCloseDrawableRight(R.drawable.tag_close);
+                mTagsEditText.setCloseDrawableRight(R.drawable.dot);
                 break;
             }
             case R.id.btnChangeClosePadding: {
                 mTagsEditText.setCloseDrawablePadding(R.dimen.larger_padding);
                 break;
             }
+
+            case R.id.btnSetLimit:
+                mTagsEditText.setTags(new String[]{"A","B","C","D","5"});
+		        mTagsEditText.setTagsLimit(5);
+	        	break;
+
+	        default:
+	        	break;
         }
     }
 
